@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Cloudinary\Cloudinary;
+use App\Models\Media;
+
+class MediaController extends Controller
+{
+    public function index(){
+        $user = Auth::user();
+        $memoryDates = $user->media()->select('memory_date')->distinct()->pluck('memory_date');
+        return view('dashboard', compact('memoryDates'));
+    }
+
+    public function showMemoriesByDate($date){
+        $user = Auth::user();
+        $memories = $user->media()->where('memory_date', $date)->get();
+        return view('gallery', compact('memories', 'date'));
+    }
+
+    public function store(Request $request, $date){
+        $request->validate([
+            'media_file' => 'required|file|mimes:jpg,jpeg,png,mp4,mov,quicktime|max:50000'
+        ]);
+
+        $file = $request->file('media_file');
+
+        $cloudinary = new Cloudinary();
+        $result = $cloudinary->uploadApi()->upload($file->getRealPath(), [
+            'folder' => 'memories/' . Auth::id(),
+            'resource_type' => 'auto'
+        ]);
+
+        Media::create([
+            'user_id' => Auth::id(),
+            'memory_date' => $date,
+            'media_url' => $result['secure_url'],
+            'media_type' => $result['resource_type'],
+            'public_id' => $result['public_id']
+        ]);
+
+        return redirect()->route('memories.show', $date)->with('success', 'Memory added successfully');
+    }
+
+    public function destroy($id){
+        $media = Media::findOrFail($id);
+
+        if($media->user_id != Auth::id()){
+            abort(403, 'Unauthorized access!!');
+        }
+        
+        $cloudinary = new Cloudinary();
+        $cloudinary->uploadApi()->destroy($media->public_id, [
+            'resource_type' => $media->media_type
+        ]);
+
+        $media->delete();
+
+        return back()->with('Success', 'Memory deleted successfully');
+    }
+}
