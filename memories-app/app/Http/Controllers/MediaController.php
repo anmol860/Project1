@@ -23,7 +23,7 @@ class MediaController extends Controller
 
     public function store(Request $request, $date){
         $request->validate([
-            'media_file' => 'required|file|mimes:jpg,jpeg,png,mp4,mov,quicktime|max:50000'
+            'media_file' => 'required|file|mimes:jpg,jpeg,png,mp4,mov,quicktime|max:100000'
         ]);
 
         $file = $request->file('media_file');
