@@ -1,3 +1,509 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════
+   DARK THEME — GitHub-style dark mode (always on)
+   Color palette:
+     bg-primary:   #0d1117  (page background)
+     bg-surface:   #161b22  (cards, nav, panels)
+     bg-elevated:  #21262d  (inputs, hover states)
+     border:       #30363d
+     text-primary: #e6edf3
+     text-secondary:#8b949e
+     accent:       #6366f1  (indigo — kept from existing theme)
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Base ── */
+body {
+    background-color: #0d1117 !important;
+    color: #e6edf3 !important;
+}
+
+/* ── Page wrapper (min-h-screen bg-gray-100) ── */
+.min-h-screen {
+    background-color: #0d1117 !important;
+}
+
+/* ── Navigation bar ── */
+nav {
+    background: linear-gradient(135deg, #06101f 0%, #0a1628 50%, #0d1f3c 100%) !important;
+    border-color: transparent !important;
+    border-bottom: 1px solid !important;
+    border-image: linear-gradient(90deg, #a2d2ff55, #bde0fe88, #a2d2ff55) 1 !important;
+    box-shadow: 0 2px 24px rgba(162, 210, 255, 0.08) !important;
+}
+
+/* ── Page header (bg-white shadow) ── */
+header.bg-white,
+header[class*="bg-white"] {
+    background-color: #161b22 !important;
+    box-shadow: 0 1px 0 #30363d !important;
+}
+
+header h2 {
+    color: #e6edf3 !important;
+}
+
+/* ── Cards / Panels (bg-white) ── */
+.bg-white {
+    background-color: #161b22 !important;
+    color: #e6edf3 !important;
+}
+
+.shadow-sm,
+.shadow,
+.shadow-md {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ── Text colors ── */
+.text-gray-900,
+.text-gray-800 {
+    color: #e6edf3 !important;
+}
+
+.text-gray-700 {
+    color: #c9d1d9 !important;
+}
+
+.text-gray-600 {
+    color: #8b949e !important;
+}
+
+.text-gray-500 {
+    color: #8b949e !important;
+}
+
+.text-gray-400 {
+    color: #6e7681 !important;
+}
+
+/* ── Borders ── */
+.border-gray-100,
+.border-gray-200,
+.border-gray-300 {
+    border-color: #30363d !important;
+}
+
+/* ── Form inputs (text-input component) ── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    background-color: #0d1117 !important;
+    border-color: #30363d !important;
+    color: #e6edf3 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #6e7681 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* ── Checkbox ── */
+input[type="checkbox"] {
+    background-color: #0d1117 !important;
+    border-color: #30363d !important;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #6366f1 !important;
+    border-color: #6366f1 !important;
+}
+
+/* ── File input ── */
+input[type="file"] {
+    color: #8b949e !important;
+}
+
+
+
+/* ── Active nav link border ── */
+.border-indigo-400 {
+    border-color: #6366f1 !important;
+}
+
+/* ── Dropdown menu ── */
+.ring-black {
+    --tw-ring-color: #30363d !important;
+}
+
+[class*="py-1"][class*="bg-white"] {
+    background-color: #161b22 !important;
+}
+
+/* Dropdown links */
+.block.w-full[class*="text-gray-700"],
+a[class*="text-gray-700"][class*="block"] {
+    color: #c9d1d9 !important;
+}
+
+a[class*="hover\\:bg-gray-100"]:hover,
+a[class*="hover:bg-gray-100"]:hover {
+    background-color: #21262d !important;
+}
+
+/* User dropdown hover — preserve the pink hover the user set */
+a[class*="hover:bg-\\[\\#ffc8dd\\]"]:hover {
+    background-color: #ffc8dd !important;
+    color: #0d1117 !important;
+}
+
+/* ── Primary button ── */
+.bg-gray-800 {
+    background-color: #238636 !important;
+}
+
+button.bg-gray-800:hover,
+button[class*="hover\\:bg-gray-700"]:hover {
+    background-color: #2ea043 !important;
+}
+
+/* ── Secondary button ── */
+button[class*="bg-white"][class*="border-gray-300"] {
+    background-color: #21262d !important;
+    border-color: #30363d !important;
+    color: #c9d1d9 !important;
+}
+
+button[class*="bg-white"][class*="border-gray-300"]:hover {
+    background-color: #30363d !important;
+}
+
+/* ── Danger button (keep red, just darken) ── */
+.bg-red-600 {
+    background-color: #da3633 !important;
+}
+
+.bg-red-600:hover {
+    background-color: #f85149 !important;
+}
+
+/* ── Guest layout (login/register) ── */
+.bg-gray-100 {
+    background-color: #0d1117 !important;
+}
+
+/* Auth card in guest layout */
+div[class*="bg-white"][class*="shadow-md"] {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d !important;
+}
+
+/* ── Responsive nav menu (mobile hamburger) ── */
+.hover\:bg-gray-100:hover {
+    background-color: #21262d !important;
+}
+
+.hover\:text-gray-500:hover,
+.hover\:text-gray-700:hover,
+.hover\:text-gray-800:hover,
+.hover\:text-gray-900:hover {
+    color: #e6edf3 !important;
+}
+
+.focus\:bg-gray-100:focus {
+    background-color: #21262d !important;
+}
+
+/* Responsive nav active */
+.bg-indigo-50 {
+    background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+.text-indigo-700 {
+    color: #818cf8 !important;
+}
+
+.hover\:bg-gray-50:hover {
+    background-color: #21262d !important;
+}
+
+/* ── Gallery empty state card ── */
+div[class*="bg-white"][class*="border-gray-100"] {
+    background-color: #161b22 !important;
+    border-color: #30363d !important;
+}
+
+/* ── Modal overlay ── */
+.bg-gray-500.opacity-75 {
+    background-color: #000 !important;
+    opacity: 0.7 !important;
+}
+
+/* Modal content */
+div[class*="mb-6"][class*="bg-white"][class*="rounded-lg"] {
+    background-color: #161b22 !important;
+}
+
+/* ── Upload section ── */
+.file\:bg-blue-50::file-selector-button {
+    background-color: #21262d !important;
+    color: #58a6ff !important;
+}
+
+.hover\:file\:bg-blue-100:hover::file-selector-button {
+    background-color: #30363d !important;
+}
+
+/* ── Calendar (FullCalendar) pastel pop theme ── */
+#calendar {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px #30363d,
+        0 8px 32px rgba(205, 180, 219, 0.12),
+        0 4px 16px rgba(189, 224, 254, 0.08);
+}
+
+.fc {
+    --fc-border-color: #2a2f3a;
+    --fc-page-bg-color: #13151f;
+    --fc-neutral-bg-color: #1a1d2a;
+    --fc-today-bg-color: rgba(255, 175, 204, 0.10);
+    --fc-event-bg-color: #ffafcc;
+    --fc-event-border-color: #ffc8dd;
+    --fc-event-text-color: #1a0a12;
+    font-family: inherit;
+}
+
+/* ── Toolbar ── */
+.fc-header-toolbar {
+    background: linear-gradient(135deg, #1a1025 0%, #111827 50%, #0f1a25 100%) !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid #2a2f3a;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    background: linear-gradient(90deg, #cdb4db, #ffc8dd, #a2d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.02em;
+}
+
+/* ── Nav buttons ── */
+.fc .fc-button {
+    background: transparent !important;
+    border: 1px solid #30363d !important;
+    color: #8b949e !important;
+    border-radius: 8px !important;
+    padding: 0.3rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
+}
+
+.fc .fc-button:hover {
+    background: rgba(205, 180, 219, 0.12) !important;
+    border-color: #cdb4db !important;
+    color: #cdb4db !important;
+    box-shadow: 0 0 10px rgba(205, 180, 219, 0.15) !important;
+}
+
+.fc .fc-button:focus {
+    box-shadow: 0 0 0 2px rgba(205, 180, 219, 0.3) !important;
+}
+
+.fc .fc-button-active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background: linear-gradient(135deg, #cdb4db44, #ffc8dd44) !important;
+    border-color: #ffc8dd !important;
+    color: #ffc8dd !important;
+}
+
+/* ── Day-of-week headers ── */
+.fc .fc-col-header-cell {
+    background-color: #13151f !important;
+    padding: 0.5rem 0 !important;
+    border-color: #2a2f3a !important;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: #a2d2ff !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+}
+
+/* ── Day cells ── */
+.fc .fc-daygrid-day {
+    background-color: #13151f !important;
+    transition: background-color 0.15s ease !important;
+    cursor: pointer;
+}
+
+.fc .fc-daygrid-day:hover {
+    background-color: rgba(162, 210, 255, 0.07) !important;
+}
+
+/* ── Day number circles (all days) ── */
+.fc .fc-daygrid-day-number {
+    color: #c9d1d9 !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+    /* Circle shape */
+    width: 28px;
+    height: 28px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 4px;
+}
+
+.fc .fc-daygrid-day:hover .fc-daygrid-day-number {
+    background: rgba(162, 210, 255, 0.1);
+    color: #bde0fe !important;
+}
+
+/* ── Out-of-month days ── */
+.fc .fc-day-other {
+    background-color: #0f1117 !important;
+}
+
+.fc .fc-day-other .fc-daygrid-day-number {
+    color: #3a3f4a !important;
+}
+
+/* ── Today — white glowing circle ── */
+.fc .fc-day-today {
+    background-color: #13151f !important;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+    color: #13151f !important;
+    font-weight: 700 !important;
+    background: #ffffff !important;
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.7),
+        0 0 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ── Memory days — THE glow ── */
+.fc .fc-daygrid-day.has-memory {
+    background: rgba(255, 175, 204, 0.05) !important;
+}
+
+.fc .fc-daygrid-day.has-memory .fc-daygrid-day-number {
+    color: #13151f !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, #ffafcc, #cdb4db) !important;
+    box-shadow:
+        0 0 10px rgba(255, 175, 204, 0.5),
+        0 0 20px rgba(205, 180, 219, 0.25) !important;
+}
+
+.fc .fc-daygrid-day.has-memory:hover .fc-daygrid-day-number {
+    box-shadow:
+        0 0 14px rgba(255, 175, 204, 0.7),
+        0 0 28px rgba(205, 180, 219, 0.4) !important;
+    transform: scale(1.15);
+}
+
+/* ── Grid borders ── */
+.fc th,
+.fc td {
+    border-color: #2a2f3a !important;
+}
+
+.fc .fc-scrollgrid {
+    border-color: #2a2f3a !important;
+    border-radius: 0 !important;
+}
+
+.fc .fc-scrollgrid-section>td {
+    border: none !important;
+}
+
+/* ── Calendar responsive (mobile) ── */
+@media (max-width: 640px) {
+    .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1.1rem;
+    }
+
+    .fc .fc-button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .fc .fc-daygrid-day {
+        min-height: 2.5rem;
+    }
+
+    .fc th {
+        font-size: 0.75rem;
+    }
+
+    .fc .fc-daygrid-day-number {
+        font-size: 0.8rem;
+        padding: 2px 4px;
+    }
+
+    #calendar {
+        padding: 0 0.25rem;
+    }
+}
+
+/* ── Scrollbar (GitHub-style) ── */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+}
+
+/* ── Selection highlight ── */
+::selection {
+    background-color: rgba(99, 102, 241, 0.4);
+    color: #e6edf3;
+}
+
+/* ── Links in content areas ── */
+a.underline.text-sm.text-gray-600 {
+    color: #58a6ff !important;
+}
+
+a.underline.text-sm.text-gray-600:hover {
+    color: #79c0ff !important;
+}

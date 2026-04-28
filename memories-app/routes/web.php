@@ -17,7 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [MediaController::class, 'index'])->name('dashboard');
     Route::get('/memories/{date}', [MediaController::class, 'showMemoriesByDate'])->name('memories.show');
     Route::post('memories/{date}/store', [MediaController::class, 'store'])->name('memories.store');
-    Route::delete('memories/{id}', [MediaController::class, 'destroy'])->name('memories.destroy');
+    Route::delete('memories/{id}/delete', [MediaController::class, 'destroy'])->name('memories.destroy');
+    Route::get('memories/{id}/expand', [MediaController::class, 'expandGallery'])->name('memories.expand');
+    Route::get('memories/{id}/download', [MediaController::class, 'download'])->name('memories.download');
 });
 
 require __DIR__.'/auth.php';

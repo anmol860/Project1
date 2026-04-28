@@ -59,6 +59,37 @@ class MediaController extends Controller
 
         $media->delete();
 
-        return back()->with('Success', 'Memory deleted successfully');
+        return redirect()->route('memories.show', $media->memory_date);
+    }
+
+    public function download($id){
+        $media = Media::findOrFail($id);
+
+        if($media->user_id != Auth::id()){
+            abort(403, 'Unauthorized Access!!');
+        }
+
+        $cloudinary = new Cloudinary();
+        if($media->media_type == 'image'){
+            $downloadUrl = $cloudinary->image($media->public_id)
+            ->addFlag('attachment') 
+            ->toUrl();
+        }else{
+            $downloadUrl = $cloudinary->video($media->public_id)
+            ->addFlag('attachment') 
+            ->toUrl();
+        }
+
+        return redirect($downloadUrl);
+    }
+
+    public function expandGallery($id){
+        $media = Media::findOrFail($id);
+
+        if($media->user_id != Auth::id()){
+            abort(403, 'Unauthorized Access!!');
+        }
+        
+        return view('expanded-gallery', compact('media'));
     }
 }

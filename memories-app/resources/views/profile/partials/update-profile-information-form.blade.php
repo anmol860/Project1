@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-[#e6edf3]">
             {{ __('Profile Information') }}
         </h2>
 
