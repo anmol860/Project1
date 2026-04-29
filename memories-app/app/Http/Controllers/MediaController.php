@@ -23,26 +23,20 @@ class MediaController extends Controller
 
     public function store(Request $request, $date){
         $request->validate([
-            'media_file' => 'required|file|mimes:jpg,jpeg,png,mp4,mov,quicktime|max:100000'
+            'media_url' => 'required|url',
+            'media_type' => 'required|string',
+            'public_id' => 'required|string',
         ]);
 
-        $file = $request->file('media_file');
-
-        $cloudinary = new Cloudinary();
-        $result = $cloudinary->uploadApi()->upload($file->getRealPath(), [
-            'folder' => 'memories/' . Auth::id(),
-            'resource_type' => 'auto'
-        ]);
-
-        Media::create([
-            'user_id' => Auth::id(),
+        $request->user()->media()->create([
             'memory_date' => $date,
-            'media_url' => $result['secure_url'],
-            'media_type' => $result['resource_type'],
-            'public_id' => $result['public_id']
+            'media_url' => $request->media_url,
+            'media_type' => $request->media_type,
+            'public_id' => $request->public_id,
         ]);
 
-        return redirect()->route('memories.show', $date)->with('success', 'Memory added successfully');
+        return back()->with('success', 'Memory saved! 🏝️');
+
     }
 
     public function destroy($id){

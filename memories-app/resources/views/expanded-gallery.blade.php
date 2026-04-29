@@ -2,10 +2,10 @@
     <div class="flex flex-col items-center gap-6 px-2">
         <div class="">
             @if($media->media_type == 'image')
-                <img src="{{ $media->media_url }}" alt="Travel memory"
+                <img src="{{ str_replace('/upload','/upload/f_auto/',$media->media_url) }}" alt="Travel memory"
                     class="w-full h-auto max-h-96 md:h-[512px] lg:h-[768px] mt-10 rounded-2xl block object-cover">
             @else
-                <video src="{{ $media->media_url }}" controls
+                <video src="{{ str_replace('/upload','/upload/f_auto,q_auto/',$media->media_url) }}" controls
                     class="w-full h-auto max-h-96 md:h-[512px] lg:h-[768px] mt-10 rounded-2xl block object-cover"></video>
             @endif
         </div>
