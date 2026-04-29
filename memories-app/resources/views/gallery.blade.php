@@ -5,7 +5,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="sm:rounded-lg mt-6 text-center">
-                <h2 class="text-4xl text-[#e6edf3] mb-6">Your {{ date('d-m-Y', strtotime($date)) }} Memories</h2>
+                <h2 class="text-4xl text-[#e6edf3] mb-6">Memories from {{ date('d-m-Y', strtotime($date)) }}</h2>
 
                 <form id="uploadForm" action="{{ route('memories.store', $date) }}" method="POST">
                     @csrf

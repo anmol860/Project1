@@ -20,7 +20,7 @@
                     alt="App Logo" 
                     class="h-60 w-auto mx-auto">
                 <h1 class="text-3xl font-bold mt-2 text-white">Snapture</h1>
-                <p class="text-[#8b949e] mt-1 mb-10 animate-pulse">Every photo has a day</p>
+                <p class="text-[#8b949e] mt-1 mb-10 animate-pulse">Every memory has a day</p>
             </div>
 
             @if (Route::has('login'))
