@@ -67,23 +67,23 @@
         var myWidget = cloudinary.createUploadWidget({
             cloudName: 'dyrwwdtef',
             uploadPreset: 'snapture_uploads',
-            sources: ['local', 'url', 'camera'],
+            sources: ['local'],
             multiple: false,
+            clientAllowedFormats: ['image', 'video'],
             styles: {
                 palette: {
-                    window: "#161b22",
-                    sourceBg: "#0d1117",
-                    windowBorder: "#30363d",
-                    tabIcon: "#58a6ff",
-                    inactiveTabIcon: "#8b949e",
-                    menuIcons: "#58a6ff",
-                    link: "#58a6ff",
-                    action: "#238636",
-                    inProgress: "#58a6ff",
-                    complete: "#2ea043",
-                    error: "#f85149",
-                    textLight: "#ffffff",
-                    textDark: "#000000"
+                    window: "#101827",
+                    windowBorder: "#4b5563",
+                    tabIcon: "#60a5fa",
+                    menuIcons: "#9ca3af",
+                    textDark: "#1f2937",
+                    textLight: "#f9fafb",
+                    link: "#60a5fa",
+                    action: "#3b82f6",
+                    inProgress: "#3b82f6",
+                    complete: "#10b981",
+                    error: "#ef4444",
+                    sourceBg: "#1f2937"
                 }
             }
         }, (error, result) => {

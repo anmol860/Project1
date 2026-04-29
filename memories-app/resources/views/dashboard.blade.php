@@ -33,6 +33,8 @@
 
             const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                height:'auto',
+                contentHeight: 'auto',
 
                 dayCellDidMount: function(arg) {
                     const dateStr = arg.date.toISOString().split('T')[0];
