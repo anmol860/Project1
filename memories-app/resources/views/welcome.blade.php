@@ -35,6 +35,10 @@
                            class="w-full px-5 py-3 bg-[#238636] text-white rounded-lg font-medium transition hover:scale-105 hover:bg-[#2ea043]">
                             Log in
                         </a>
+                        <a href="{{ route('google.login') }}" class="underline text-sm text-gray-600 hover:text-gray-900">
+                Log in with Google 🌐
+            </a>
+            
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" 

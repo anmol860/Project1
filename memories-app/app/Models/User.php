@@ -22,6 +22,10 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    
+    protected $fillable= [
+        'google_id'
+    ];
     protected function casts(): array
     {
         return [
