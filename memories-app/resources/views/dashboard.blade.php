@@ -6,7 +6,7 @@
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-pink-400 mb-3 hover:scale-105 transition duration-300">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-pink-400 mb-3 hover:scale-105 transition duration-300">
             {{ Auth::user()->name }}'s Memories
         </h1>
         
