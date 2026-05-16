@@ -13,6 +13,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
+                        {{ __('Crew') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -36,6 +39,7 @@
                              style="display: none;">
                             
                             <a href="{{ route('dashboard') }}" class="block px-4 py-3 text-sm text-[#e6edf3] hover:bg-[#30363d] border-b border-[#30363d]">{{ __('Dashboard') }}</a>
+                            <a href="{{ route('groups.index') }}" class="block px-4 py-3 text-sm text-[#e6edf3] hover:bg-[#30363d] border-b border-[#30363d]">{{ __('Groups') }}</a>
                             
                             <a href="{{ route('profile.edit') }}" class="block px-4 py-3 text-sm text-[#e6edf3] hover:bg-[#30363d] border-b border-[#30363d]">{{ __('Profile') }}</a>
                             

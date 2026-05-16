@@ -1,10 +1,16 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-[#e6edf3]">
-            {{ __('Profile Information') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
+        <div class="flex items-center gap-3 mb-1">
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
+                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold text-[#e6edf3]">
+                {{ __('Profile Information') }}
+            </h2>
+        </div>
+        <p class="mt-1 text-sm text-[#8b949e]">
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
@@ -13,7 +19,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-5">
         @csrf
         @method('patch')
 
@@ -30,16 +36,16 @@
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-gray-800">
+                    <p class="text-sm mt-2 text-[#8b949e]">
                         {{ __('Your email address is unverified.') }}
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button form="send-verification" class="underline text-sm text-indigo-400 hover:text-indigo-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
+                        <p class="mt-2 font-medium text-sm text-emerald-400">
                             {{ __('A new verification link has been sent to your email address.') }}
                         </p>
                     @endif
@@ -47,8 +53,8 @@
             @endif
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div class="flex items-center gap-4 pt-2">
+            <x-primary-button>{{ __('Save Changes') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -56,8 +62,8 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                    class="text-sm text-emerald-400 font-medium"
+                >✓ {{ __('Saved.') }}</p>
             @endif
         </div>
     </form>

@@ -79,10 +79,6 @@ class MediaController extends Controller
 
     public function expandGallery($id){
         $media = Media::findOrFail($id);
-
-        if($media->user_id != Auth::id()){
-            abort(403, 'Unauthorized Access!!');
-        }
         
         return view('expanded-gallery', compact('media'));
     }

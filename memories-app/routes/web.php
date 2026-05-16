@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('memories/{id}/delete', [MediaController::class, 'destroy'])->name('memories.destroy');
     Route::get('memories/{id}/expand', [MediaController::class, 'expandGallery'])->name('memories.expand');
     Route::get('memories/{id}/download', [MediaController::class, 'download'])->name('memories.download');
+
+    Route::get('groups', [GroupController::class, 'index'])->name('groups.index');
+    Route::post('groups/create', [GroupController::class, 'createGroup'])->name('groups.create');
+    Route::get('groups/{group}', [GroupController::class, 'showGroup'])->name('groups.show');
+    Route::post('groups/{group}/invite', [GroupController::class, 'inviteGroupMember'])->name('groups.invite');
+    Route::get('groups/{group}/{date}', [GroupController::class, 'showGroupMemories'])->name('groups.showGroupMemories');
+    Route::post('groups/{group}/{date}/store', [GroupController::class, 'storeGroupMemories'])->name('groups.store');
+
+
 });
 
 require __DIR__.'/auth.php';
